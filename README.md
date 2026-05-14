@@ -1,13 +1,11 @@
-# VetClinic App
+# VetClinic - Autenticación
 
-## Setup Instructions
-1. Run `bundle install`
-2. Run `bin/rails db:setup`
-3. Run `bin/rails server`
+## Notas de Seguridad
+A partir del Lab 8, la aplicación requiere autenticación. La página de inicio es pública, pero cualquier intento de acceder a los recursos de la clínica redirigirá a la página de inicio de sesión.
 
-## System Dependencies
-**Important:** This application requires `libvips` to generate image variants for Active Storage.
-- On Ubuntu/Debian, install it running: `sudo apt install libvips`
+## Credenciales de Prueba
+Para probar la aplicación, puedes iniciar sesión con cualquiera de estos usuarios (todos usan la contraseña `password123`):
 
-## Sanitization Check
-During the Action Text sanitization check, pasting `<script>alert(1)</script>` into the Trix editor was successfully sanitized. The script did not execute, and the raw text was safely rendered as escaped text on the show page.
+* **Administrador:** admin@vetclinic.com
+* **Veterinario:** vet@vetclinic.com
+* **Dueño/Cliente:** owner@vetclinic.com

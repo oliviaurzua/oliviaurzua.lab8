@@ -1,7 +1,7 @@
 class CreateTreatments < ActiveRecord::Migration[8.1]
   def change
     create_table :treatments do |t|
-      t.integer :appointment_id
+      t.references :appointment, null: false, foreign_key: true
       t.string :name
       t.string :medication
       t.string :dosage

@@ -4,6 +4,10 @@ Pet.destroy_all
 Vet.destroy_all
 Owner.destroy_all
 
+User.create!(first_name: "Chief", last_name: "Administrator", email: "admin@vetclinic.com", password: "password123", password_confirmation: "password123", role: :admin)
+User.create!( first_name: "Veterinary", last_name: "Doctor", email: "vet@vetclinic.com", password: "password123", password_confirmation: "password123", role: :vet)
+User.create!( first_name: "Customer", last_name: "Owner", email: "owner@vetclinic.com", password: "password123", password_confirmation: "password123", role: :owner)
+
 v1 = Vet.create!(first_name: "Isidora", last_name: "Mercy", email: "mercy@vetclinic.com", phone: "555-1001", specialization: "Dermatology")
 v2 = Vet.create!(first_name: "Meredith", last_name: "Grey", email: "grey@vetclinic.com", phone: "555-1002", specialization: "Surgery")
 v3 = Vet.create!(first_name: "Solange", last_name: "Sheperd", email: "sheperd@vetclinic.com", phone: "555-1003", specialization: "Dentist")
@@ -22,11 +26,11 @@ p1.photo.attach(io: File.open(Rails.root.join('db', 'seeds', 'pets', 'zeus.jpeg'
 p2.photo.attach(io: File.open(Rails.root.join('db', 'seeds', 'pets', 'apolo.jpeg')), filename: 'apolo.jpeg', content_type: 'image/jpeg')
 p3.photo.attach(io: File.open(Rails.root.join('db', 'seeds', 'pets', 'teo.jpeg')), filename: 'teo.jpeg', content_type: 'image/jpeg')
 
-a1 = Appointment.create!(pet: p1, vet: v1, date: DateTime.now + 1.day, reason: "Otitis control", status: 0)
-a2 = Appointment.create!(pet: p2, vet: v1, date: DateTime.now + 2.days, reason: "Allergy wound management", status: 3)
-a3 = Appointment.create!(pet: p3, vet: v2, date: DateTime.now - 1.day, reason: "Sterilization surgery", status: 2)
-a4 = Appointment.create!(pet: p4, vet: v3, date: DateTime.now, reason: "Dental checkup", status: 1)
-a5 = Appointment.create!(pet: p5, vet: v2, date: DateTime.now - 5.days, reason: "Stomach pain", status: 2)
+a1 = Appointment.create!(pet: p1, vet: v1, date: DateTime.now + 1.day, reason: "Otitis control", status: :scheduled)
+a2 = Appointment.create!(pet: p2, vet: v1, date: DateTime.now + 2.days, reason: "Allergy wound management", status: :cancelled)
+a3 = Appointment.create!(pet: p3, vet: v2, date: DateTime.now - 1.day, reason: "Sterilization surgery", status: :completed)
+a4 = Appointment.create!(pet: p4, vet: v3, date: DateTime.now, reason: "Dental checkup", status: :in_progress)
+a5 = Appointment.create!(pet: p5, vet: v2, date: DateTime.now - 5.days, reason: "Stomach pain", status: :completed)
 
 a3.treatments.create!(name: "Anesthesia", medication: "Propofol", dosage: "5mg", clinical_notes: "<ul><li><strong>Preparation:</strong> Patient is ready for surgery.</li><li>Fasted for 12 hours.</li></ul>", administered_at: DateTime.now - 1.day)
 a3.treatments.create!(name: "Surgery", medication: "Analgesics", dosage: "1 pastilla", clinical_notes: "<h1>Successful Operation</h1><p>The sterilization was completed without complications.</p>", administered_at: DateTime.now + 2.days)

@@ -1,8 +1,8 @@
 class CreateAppointments < ActiveRecord::Migration[8.1]
   def change
     create_table :appointments do |t|
-      t.integer :pet_id
-      t.integer :vet_id
+      t.references :pet, null: false, foreign_key: true
+      t.references :vet, null: false, foreign_key: true
       t.datetime :date
       t.string :reason
       t.integer :status

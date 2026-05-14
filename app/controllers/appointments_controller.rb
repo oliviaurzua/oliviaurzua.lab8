@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[ show edit update destroy ]
 
   def index
-    @appointments = Appointment.includes(:pet, :vet).all
+    @appointments = Appointment.includes(:pet, :vet).upcoming
   end
 
   def show

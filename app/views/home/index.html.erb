@@ -1,0 +1,20 @@
+<div class="p-5 mb-4 bg-light rounded-3 text-center mt-4">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Welcome to VetClinic 🐾</h1>
+    <p class="col-md-8 mx-auto fs-4">
+      The best care for your furry friends. 
+      This is a private system for our staff and clients.
+    </p>
+    
+    <% unless user_signed_in? %>
+      <div class="mt-4">
+        <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary btn-lg me-2" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-secondary btn-lg" %>
+      </div>
+    <% else %>
+      <div class="mt-4">
+        <%= link_to "Go to Appointments", appointments_path, class: "btn btn-success btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>
